@@ -17,11 +17,7 @@ struct UsersView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             } else {
                 List(usersViewModel.users) { user in
-                    Text(user.username)
-                    Text(user.name)
-                    Text(user.phone)
-                    Text(user.email)
-                    Text(user.city)
+                    UserRowView(user: user)
                 }
             }
         }
