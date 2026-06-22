@@ -1,0 +1,17 @@
+## User settings
+xcuserdata/
+
+.swiftpm/
+.build/
+
+# Realm
+*.realm
+*.realm.lock
+*.realm.note
+*.realm.management/
+
+# macOS
+.DS_Store
+
+# Environment / secrets
+*.xcconfig
