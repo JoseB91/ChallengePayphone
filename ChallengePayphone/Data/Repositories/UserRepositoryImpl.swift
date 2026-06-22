@@ -21,6 +21,6 @@ final class UserRepositoryImpl: UserRepository {
         
         let (data, response) = try await httpClient.get(from: url)
         let users = try UserMapper.map(data, from: response)
-        return [User(id: 1, username: "", name: "", email: "", phone: "", city: "")]
+        return users
     }
 }
