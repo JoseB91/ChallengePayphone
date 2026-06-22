@@ -10,14 +10,15 @@ import SwiftUI
 @main
 struct ChallengePayphoneApp: App {
     
-    private let composer: Composer
+    private let coordinator: Coordinator
     
     init() {
-        self.composer = Composer.make()
+        self.coordinator = Coordinator.make()
     }
+    
     var body: some Scene {
         WindowGroup {
-            UsersView(usersViewModel: composer.composeUsersViewModel())
+            CoordinatorView(coordinator: coordinator.usersCoordinator)
         }
     }
 }

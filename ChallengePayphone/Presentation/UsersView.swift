@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UsersView: View {
     @StateObject var usersViewModel: UsersViewModel
+    var onSelectUser: ((User) -> Void)? = nil
     
     var body: some View {
         ZStack {
@@ -17,7 +18,12 @@ struct UsersView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             } else {
                 List(usersViewModel.users) { user in
-                    UserRowView(user: user)
+                    Button {
+                        onSelectUser?(user)
+                    } label: {
+                        UserRowView(user: user)
+                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
             }
         }
