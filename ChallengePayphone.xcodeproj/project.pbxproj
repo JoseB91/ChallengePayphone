@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B02DBD472FE9F0F9001D9031 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B02DBD462FE9F0F9001D9031 /* RealmSwift */; };
 		B0A5CEA42FE9D2B100A8908A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B0A5CEA32FE9D2B100A8908A /* Alamofire */; };
-		B0A5CEA72FE9D36500A8908A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = B0A5CEA62FE9D36500A8908A /* Realm */; };
-		B0A5CEA92FE9D36500A8908A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B0A5CEA82FE9D36500A8908A /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0A5CEA92FE9D36500A8908A /* RealmSwift in Frameworks */,
-				B0A5CEA72FE9D36500A8908A /* Realm in Frameworks */,
+				B02DBD472FE9F0F9001D9031 /* RealmSwift in Frameworks */,
 				B0A5CEA42FE9D2B100A8908A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,8 +98,7 @@
 			name = ChallengePayphone;
 			packageProductDependencies = (
 				B0A5CEA32FE9D2B100A8908A /* Alamofire */,
-				B0A5CEA62FE9D36500A8908A /* Realm */,
-				B0A5CEA82FE9D36500A8908A /* RealmSwift */,
+				B02DBD462FE9F0F9001D9031 /* RealmSwift */,
 			);
 			productName = ChallengePayphone;
 			productReference = B0A5CE782FE9CF2200A8908A /* ChallengePayphone.app */;
@@ -160,7 +157,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				B0A5CEA22FE9D2B100A8908A /* XCRemoteSwiftPackageReference "alamofire" */,
-				B0A5CEA52FE9D36500A8908A /* XCRemoteSwiftPackageReference "realm-swift" */,
+				B02DBD452FE9F0F9001D9031 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B0A5CE792FE9CF2200A8908A /* Products */;
@@ -488,6 +485,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B02DBD452FE9F0F9001D9031 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = community;
+				kind = branch;
+			};
+		};
 		B0A5CEA22FE9D2B100A8908A /* XCRemoteSwiftPackageReference "alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/alamofire/alamofire";
@@ -496,31 +501,18 @@
 				minimumVersion = 5.12.0;
 			};
 		};
-		B0A5CEA52FE9D36500A8908A /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift";
-			requirement = {
-				branch = community;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B02DBD462FE9F0F9001D9031 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B02DBD452FE9F0F9001D9031 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		B0A5CEA32FE9D2B100A8908A /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B0A5CEA22FE9D2B100A8908A /* XCRemoteSwiftPackageReference "alamofire" */;
 			productName = Alamofire;
-		};
-		B0A5CEA62FE9D36500A8908A /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B0A5CEA52FE9D36500A8908A /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		B0A5CEA82FE9D36500A8908A /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B0A5CEA52FE9D36500A8908A /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
