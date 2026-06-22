@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B0A5CEA42FE9D2B100A8908A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B0A5CEA32FE9D2B100A8908A /* Alamofire */; };
+		B0A5CEA72FE9D36500A8908A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = B0A5CEA62FE9D36500A8908A /* Realm */; };
+		B0A5CEA92FE9D36500A8908A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B0A5CEA82FE9D36500A8908A /* RealmSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B0A5CE862FE9CF2400A8908A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -39,6 +45,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0A5CEA92FE9D36500A8908A /* RealmSwift in Frameworks */,
+				B0A5CEA72FE9D36500A8908A /* Realm in Frameworks */,
+				B0A5CEA42FE9D2B100A8908A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +99,9 @@
 			);
 			name = ChallengePayphone;
 			packageProductDependencies = (
+				B0A5CEA32FE9D2B100A8908A /* Alamofire */,
+				B0A5CEA62FE9D36500A8908A /* Realm */,
+				B0A5CEA82FE9D36500A8908A /* RealmSwift */,
 			);
 			productName = ChallengePayphone;
 			productReference = B0A5CE782FE9CF2200A8908A /* ChallengePayphone.app */;
@@ -146,6 +158,10 @@
 			);
 			mainGroup = B0A5CE6F2FE9CF2200A8908A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B0A5CEA22FE9D2B100A8908A /* XCRemoteSwiftPackageReference "alamofire" */,
+				B0A5CEA52FE9D36500A8908A /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B0A5CE792FE9CF2200A8908A /* Products */;
 			projectDirPath = "";
@@ -336,6 +352,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -344,12 +361,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.joseb91.ChallengePayphone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -368,6 +389,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -376,12 +398,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.joseb91.ChallengePayphone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -460,6 +486,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B0A5CEA22FE9D2B100A8908A /* XCRemoteSwiftPackageReference "alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alamofire/alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.12.0;
+			};
+		};
+		B0A5CEA52FE9D36500A8908A /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = community;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B0A5CEA32FE9D2B100A8908A /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0A5CEA22FE9D2B100A8908A /* XCRemoteSwiftPackageReference "alamofire" */;
+			productName = Alamofire;
+		};
+		B0A5CEA62FE9D36500A8908A /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0A5CEA52FE9D36500A8908A /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		B0A5CEA82FE9D36500A8908A /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0A5CEA52FE9D36500A8908A /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B0A5CE702FE9CF2200A8908A /* Project object */;
 }
