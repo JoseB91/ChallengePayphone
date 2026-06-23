@@ -1,0 +1,77 @@
+//
+//  RealmStore.swift
+//  ChallengePayphone
+//
+//  Created by José Briones on 22/6/26.
+//
+
+import RealmSwift
+import Foundation
+
+final class RealmStore {
+    let realm: Realm
+
+    init(isStoredInMemoryOnly: Bool = false) throws {
+        var configuration = Realm.Configuration()
+
+        if isStoredInMemoryOnly {
+            configuration.inMemoryIdentifier = "in-memory-store"
+        }
+
+        self.realm = try Realm(configuration: configuration)
+    }
+}
+
+extension RealmStore: UsersStore {
+
+    func retrieveAll() async throws -> [LocalUser] {
+        return Array(realm.objects(LocalUser.self).filter("isDeleted == false"))
+    }
+        
+    func insertAll(_ users: [LocalUser]) async throws {
+        try realm.write {
+            for user in users {
+                if realm.object(ofType: LocalUser.self, forPrimaryKey: user.id) == nil {
+                    let local = LocalUser()
+                    local.id = user.id
+                    local.username = user.username
+                    local.name = user.name
+                    local.email = user.email
+                    local.phone = user.phone
+                    local.city = user.city
+                    realm.add(local)
+                }
+            }
+        }
+    }
+    
+    func insertUser(name: String, email: String, phone: String) async throws {
+        let newId = -Int(Date().timeIntervalSince1970)
+        let local = LocalUser()
+        local.id = newId
+        local.name = name
+        local.email = email
+        local.phone = phone
+        local.isLocalOnly = true
+        try? realm.write {
+            realm.add(local)
+        }
+    }
+    
+    func updateUser(with id: Int, name: String, email: String) async throws {
+        guard let user = realm.object(ofType: LocalUser.self, forPrimaryKey: id) else { return }
+        
+        try? realm.write {
+            user.name = name
+            user.email = email
+            user.isEdited = true
+        }
+    }
+    
+    func markDeleted(id: Int) async throws {
+        guard let user = realm.object(ofType: LocalUser.self, forPrimaryKey: id) else { return }
+        try? realm.write {
+            user.isDeleted = true
+        }
+    }
+}
