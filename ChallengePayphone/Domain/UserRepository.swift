@@ -7,4 +7,5 @@
 
 protocol UserRepository {
     func loadUsers() async throws -> [User]
+    func deleteUser(userId: Int) async throws 
 }

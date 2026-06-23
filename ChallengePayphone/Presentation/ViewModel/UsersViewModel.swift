@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+@MainActor
 final class UsersViewModel: ObservableObject {
     
     @Published var users: [User] = []
@@ -20,7 +21,7 @@ final class UsersViewModel: ObservableObject {
         self.repository = repository
     }
     
-    @MainActor
+    
     func loadUsers() async {
         isLoading = true
         defer { isLoading = false }
@@ -29,6 +30,15 @@ final class UsersViewModel: ObservableObject {
             users = try await repository.loadUsers()
         } catch {
             errorModel = ErrorModel(message: "\(String(localized: "FAILED_LOAD")) \(error.localizedDescription)")
+        }
+    }
+    
+    func delete(_ userId: Int) async {
+        do {
+            try await repository.deleteUser(userId: userId)
+            users = try await repository.loadUsers()
+        } catch {
+            errorModel = ErrorModel(message: "\(String(localized: "FAILED_DELETE")) \(error.localizedDescription)")
         }
     }
     

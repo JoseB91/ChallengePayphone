@@ -24,6 +24,15 @@ struct UsersView: View {
                         UserRowView(user: user)
                     }
                     .buttonStyle(PlainButtonStyle())
+                    .swipeActions(edge: .trailing) {
+                        Button(role: .destructive) {
+                            Task {
+                                await usersViewModel.delete(user.id)
+                            }
+                        } label: {
+                            Label(String(localized: "DELETE"), systemImage: "trash")
+                        }
+                    }
                 }
             }
         }
@@ -44,3 +53,4 @@ struct UsersView: View {
 //#Preview {
 //    UsersView()
 //}
+
