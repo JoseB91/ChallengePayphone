@@ -1,0 +1,34 @@
+{
+  "configurations" : [
+    {
+      "id" : "B468C6CC-BDF2-48D6-8C3E-F5D10FC77A89",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:ChallengePayphone.xcodeproj",
+          "identifier" : "B0A5CE772FE9CF2200A8908A",
+          "name" : "ChallengePayphone"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random",
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ChallengePayphone.xcodeproj",
+        "identifier" : "B0A5CE842FE9CF2400A8908A",
+        "name" : "ChallengePayphoneTests"
+      }
+    }
+  ],
+  "version" : 1
+}
