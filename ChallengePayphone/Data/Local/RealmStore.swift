@@ -18,17 +18,19 @@ final class RealmStore {
             configuration.inMemoryIdentifier = "in-memory-store"
         }
 
-        self.realm = try Realm(configuration: configuration)
+        let realm = try Realm(configuration: configuration)
+        self.realm = realm
     }
 }
 
 extension RealmStore: UsersStore {
 
-    func retrieveAll() async throws -> [LocalUser] {
-        return Array(realm.objects(LocalUser.self).filter("isDeleted == false"))
+    func retrieveAll() async throws -> [User] {
+        let localUsers = Array(realm.objects(LocalUser.self).filter("isDeleted == false"))
+        return localUsers.toModels()
     }
         
-    func insertAll(_ users: [LocalUser]) async throws {
+    func insertAll(_ users: [User]) async throws {
         try realm.write {
             for user in users {
                 if realm.object(ofType: LocalUser.self, forPrimaryKey: user.id) == nil {
