@@ -30,7 +30,8 @@ import Combine
 @MainActor
 final class UsersCoordinator: ObservableObject {
     @Published var path : [UsersRoute] = []
-    
+    @Published var isShowingCreateUser = false
+
     let usersViewModel: UsersViewModel
     private let composer: Composer
 
@@ -41,6 +42,10 @@ final class UsersCoordinator: ObservableObject {
 
     func showDetail(for user: User) {
         path.append(.detail(user))
+    }
+    
+    func showCreateUser() {
+        isShowingCreateUser = true
     }
 }
 

@@ -21,6 +21,11 @@ struct CoordinatorView: View {
                         UserDetailView(user: user)
                     }
                 }
+                .sheet(isPresented: $coordinator.isShowingCreateUser) {
+                    CreateUserView { user in
+                        Task { await coordinator.usersViewModel.create(user) }
+                    }
+                }
             }
         } else {
             // Fallback on earlier versions

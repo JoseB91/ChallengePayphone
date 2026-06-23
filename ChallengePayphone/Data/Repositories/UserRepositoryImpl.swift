@@ -41,6 +41,10 @@ final class UserRepositoryImpl: UserRepository {
     func deleteUser(userId: Int) async throws {
         try await usersStore.markDeleted(id: userId)
     }
+    
+    func createUser(_ user: User) async throws {
+        try await usersStore.insertUser(name: user.name, email: user.email, phone: user.phone)
+    }
 }
 
 enum RepositoryError: Error {

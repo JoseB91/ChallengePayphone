@@ -42,6 +42,16 @@ final class UsersViewModel: ObservableObject {
         }
     }
     
+    func create(_ user: User) async {
+        do {
+            try await repository.createUser(user)
+            users = try await repository.loadUsers()
+        } catch {
+            errorModel = ErrorModel(message: "...")
+        }
+    }
+
+    
 }
 
 struct ErrorModel: Identifiable {

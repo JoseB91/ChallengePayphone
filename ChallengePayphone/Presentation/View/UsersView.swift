@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct UsersView: View {
+    
     @StateObject var usersViewModel: UsersViewModel
+    
     var onSelectUser: ((User) -> Void)? = nil
+    var onCreateUser: (() -> Void)? = nil
     
     var body: some View {
         ZStack {
@@ -44,13 +47,22 @@ struct UsersView: View {
                 dismissButton: .default(Text(String(localized: "OK")))
             )
         }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    onCreateUser?() }
+                label: {
+                    Image(systemName: "plus")
+                }
+            }
+        }
         .task {
             await usersViewModel.loadUsers()
         }
     }
+    
 }
 
 //#Preview {
 //    UsersView()
 //}
-
