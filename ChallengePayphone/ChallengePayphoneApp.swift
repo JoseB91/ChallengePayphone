@@ -10,15 +10,26 @@ import SwiftUI
 @main
 struct ChallengePayphoneApp: App {
     
-    private let coordinator: Coordinator
-    
+    private let coordinator: Coordinator?
+    private let launchError: Error?
+
     init() {
-        self.coordinator = Coordinator.make()
+        do {
+            self.coordinator = try Coordinator.make()
+            self.launchError = nil
+        } catch {
+            self.coordinator = nil
+            self.launchError = error
+        }
     }
     
     var body: some Scene {
         WindowGroup {
-            CoordinatorView(coordinator: coordinator.usersCoordinator)
+            if let coordinator {
+                CoordinatorView(coordinator: coordinator.usersCoordinator)
+            } else {
+                LaunchErrorView(error: launchError)
+            }
         }
     }
 }

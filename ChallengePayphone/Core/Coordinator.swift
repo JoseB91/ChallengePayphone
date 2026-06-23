@@ -19,8 +19,8 @@ final class Coordinator {
         self.usersCoordinator = UsersCoordinator(composer: composer)
     }
 
-    static func make() -> Coordinator {
-        Coordinator(composer: Composer.make())
+    static func make() throws -> Coordinator {
+        Coordinator(composer: try Composer.make())
     }
 }
 
