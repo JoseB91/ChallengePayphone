@@ -14,7 +14,7 @@ struct UsersView: View {
     var body: some View {
         ZStack {
             if usersViewModel.isLoading {
-                ProgressView("Loading characters...")
+                ProgressView("Loading users...")
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             } else {
                 List(usersViewModel.users) { user in
@@ -27,7 +27,7 @@ struct UsersView: View {
                 }
             }
         }
-        .navigationTitle("Rick and Morty")
+        .navigationTitle("Users")
         .alert(item: $usersViewModel.errorModel) { errorModel in
             Alert(
                 title: Text("Error"),

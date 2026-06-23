@@ -18,7 +18,7 @@ struct CoordinatorView: View {
                 .navigationDestination(for: UsersRoute.self) { route in
                     switch route {
                     case .detail(let user):
-                        Color(.red)
+                        UserDetailView(user: user)
                     }
                 }
             }
