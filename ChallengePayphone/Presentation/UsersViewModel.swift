@@ -28,7 +28,7 @@ final class UsersViewModel: ObservableObject {
         do {
             users = try await repository.loadUsers()
         } catch {
-            errorModel = ErrorModel(message: "Failed to load users: \(error.localizedDescription)")
+            errorModel = ErrorModel(message: "\(String(localized: "FAILED_LOAD")) \(error.localizedDescription)")
         }
     }
     

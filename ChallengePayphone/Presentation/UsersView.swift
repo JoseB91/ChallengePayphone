@@ -14,7 +14,7 @@ struct UsersView: View {
     var body: some View {
         ZStack {
             if usersViewModel.isLoading {
-                ProgressView("Loading users...")
+                ProgressView(String(localized: "LOADING_USERS"))
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             } else {
                 List(usersViewModel.users) { user in
@@ -27,12 +27,12 @@ struct UsersView: View {
                 }
             }
         }
-        .navigationTitle("Users")
+        .navigationTitle(String(localized: "USERS"))
         .alert(item: $usersViewModel.errorModel) { errorModel in
             Alert(
-                title: Text("Error"),
+                title: Text(String(localized: "ERROR")),
                 message: Text(errorModel.message),
-                dismissButton: .default(Text("OK"))
+                dismissButton: .default(Text(String(localized: "OK")))
             )
         }
         .task {
