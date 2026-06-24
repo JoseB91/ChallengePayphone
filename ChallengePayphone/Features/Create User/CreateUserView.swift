@@ -15,16 +15,40 @@ struct CreateUserView: View {
     @State private var phone = ""
     @State private var city = ""
     var onSave: (User) -> Void
-
+    
+    private var isFormValid: Bool {
+        Validation.isValidName(name) &&
+        Validation.isValidEmail(email) &&
+        Validation.isValidPhone(phone)
+    }
+    
     var body: some View {
         if #available(iOS 16.0, *) {
             NavigationStack {
                 Form {
                     TextField("Name", text: $name)
+                        .keyboardType(.default)
+                        .autocorrectionDisabled()
+                    
                     TextField("Username", text: $username)
+                        .autocorrectionDisabled()
+                    
                     TextField("Email", text: $email)
+                        .keyboardType(.emailAddress)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                                        
                     TextField("Phone", text: $phone)
+                    .keyboardType(.numberPad)
+                    .onChange(of: phone) { newValue in
+                        if newValue.count > 10 {
+                            phone = String(newValue.prefix(10))
+                        }
+                    }
+                    
                     TextField("City", text: $city)
+                        .disabled(true)
+                        .foregroundColor(.gray)
                 }
                 .navigationTitle("New User")
                 .toolbar {
@@ -33,13 +57,17 @@ struct CreateUserView: View {
                     }
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Save") {
-                            let user = User(id: 0, username: username, name: name,
-                                            email: email, phone: phone, city: city,
+                            let user = User(id: 0,
+                                            username: username,
+                                            name: name,
+                                            email: email,
+                                            phone: phone,
+                                            city: city,
                                             isLocalOnly: true)
                             onSave(user)
                             dismiss()
                         }
-                        .disabled(name.isEmpty || username.isEmpty)
+                        .disabled(!isFormValid)
                     }
                 }
             }

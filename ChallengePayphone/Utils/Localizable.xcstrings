@@ -38,6 +38,23 @@
         }
       }
     },
+    "FAILED_CREATE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to create user:"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al crear usuario:"
+          }
+        }
+      }
+    },
     "FAILED_DELETE" : {
       "extractionState" : "manual",
       "localizations" : {

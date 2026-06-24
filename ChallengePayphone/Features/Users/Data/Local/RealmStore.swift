@@ -47,10 +47,11 @@ extension RealmStore: UsersStore {
         }
     }
     
-    func insertUser(name: String, email: String, phone: String) async throws {
+    func insertUser(username: String, name: String, email: String, phone: String) async throws {
         let newId = -Int(Date().timeIntervalSince1970)
         let local = LocalUser()
         local.id = newId
+        local.username = username
         local.name = name
         local.email = email
         local.phone = phone

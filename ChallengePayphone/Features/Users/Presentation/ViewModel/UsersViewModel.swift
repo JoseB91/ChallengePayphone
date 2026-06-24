@@ -47,7 +47,7 @@ final class UsersViewModel: ObservableObject {
             try await repository.createUser(user)
             users = try await repository.loadUsers()
         } catch {
-            errorModel = ErrorModel(message: "...")
+            errorModel = ErrorModel(message: "\(String(localized: "FAILED_CREATE")) \(error.localizedDescription)")
         }
     }
 
