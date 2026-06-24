@@ -14,7 +14,8 @@ struct CoordinatorView: View {
         if #available(iOS 16.0, *) {
             NavigationStack(path: $coordinator.path) {
                 UsersView(usersViewModel: coordinator.usersViewModel,
-                          onSelectUser: coordinator.showDetail)
+                          onSelectUser: coordinator.showDetail,
+                          onCreateUser: coordinator.showCreateUser)
                 .navigationDestination(for: UsersRoute.self) { route in
                     switch route {
                     case .detail(let user):
