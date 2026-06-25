@@ -34,12 +34,7 @@ struct UserDetailView: View {
             Divider()
             
             VStack(alignment: .leading, spacing: 3) {
-                HStack(spacing: 4) {
-                    Image(systemName: "mappin.and.ellipse")
-                    Text(user.city)
-                        .foregroundStyle(.secondary)
-                }
-                
+
                 HStack(spacing: 4) {
                     Image(systemName: "envelope")
                     Text(user.email)
@@ -51,6 +46,13 @@ struct UserDetailView: View {
                     Text(user.phone)
                         .foregroundStyle(.secondary)
                 }
+            
+                HStack(spacing: 4) {
+                    Image(systemName: "mappin.and.ellipse")
+                    Text(user.city)
+                        .foregroundStyle(.secondary)
+                }
+
             }
             .padding()
             

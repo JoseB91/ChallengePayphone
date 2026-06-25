@@ -4,6 +4,74 @@
     "@%@" : {
 
     },
+    "LOCATION_DENIED" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location access is denied. Enable it in Settings to use this feature."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El acceso a la ubicación está denegado. Actívalo en Ajustes para usar esta función."
+          }
+        }
+      }
+    },
+    "LOCATION_ERROR_TITLE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location Error"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error de Ubicación"
+          }
+        }
+      }
+    },
+    "LOCATION_MESSAGE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latitude: %.6f\nLongitude: %.6f"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latitud: %.6f\nLongitud: %.6f"
+          }
+        }
+      }
+    },
+    "LOCATION_TITLE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ubicación"
+          }
+        }
+      }
+    },
     "DELETE" : {
       "extractionState" : "manual",
       "localizations" : {
