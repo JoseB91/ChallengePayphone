@@ -47,7 +47,7 @@ extension RealmStore: UsersStore {
         }
     }
     
-    func insertUser(username: String, name: String, email: String, phone: String) async throws {
+    func insertUser(username: String, name: String, email: String, phone: String, city: String) async throws {
         let newId = -Int(Date().timeIntervalSince1970)
         let local = LocalUser()
         local.id = newId
@@ -55,6 +55,7 @@ extension RealmStore: UsersStore {
         local.name = name
         local.email = email
         local.phone = phone
+        local.city = city
         local.isLocalOnly = true
         try? realm.write {
             realm.add(local)

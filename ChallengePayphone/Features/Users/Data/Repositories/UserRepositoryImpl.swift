@@ -43,7 +43,7 @@ final class UserRepositoryImpl: UserRepository {
     }
     
     func createUser(_ user: User) async throws {
-        try await usersStore.insertUser(username: user.username, name: user.name, email: user.email, phone: user.phone)
+        try await usersStore.insertUser(username: user.username, name: user.name, email: user.email, phone: user.phone, city: user.city)
     }
 }
 
