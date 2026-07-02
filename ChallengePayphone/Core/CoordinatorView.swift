@@ -7,6 +7,43 @@
 
 import SwiftUI
 
+private struct LegacyCoordinatorView: View {
+    @ObservedObject var coordinator: UsersCoordinator
+    @State private var selectedUser: User? = nil
+
+    var body: some View {
+        NavigationView {
+            UsersView(usersViewModel: coordinator.usersViewModel,
+                      onSelectUser: { selectedUser = $0 },
+                      onCreateUser: coordinator.showCreateUser)
+            .background(
+                NavigationLink(
+                    destination: Group {
+                        if let user = selectedUser {
+                            UserDetailView(user: user) { updated in
+                                Task {
+                                    await coordinator.usersViewModel.update(updated)
+                                    selectedUser = nil
+                                }
+                            }
+                        }
+                    },
+                    isActive: Binding(
+                        get: { selectedUser != nil },
+                        set: { if !$0 { selectedUser = nil } }
+                    )
+                ) { EmptyView() }
+            )
+            .sheet(isPresented: $coordinator.isShowingCreateUser) {
+                CreateUserView { user in
+                    Task { await coordinator.usersViewModel.create(user) }
+                }
+            }
+        }
+        .navigationViewStyle(.stack)
+    }
+}
+
 struct CoordinatorView: View {
     @StateObject var coordinator: UsersCoordinator
 
@@ -34,7 +71,7 @@ struct CoordinatorView: View {
                 }
             }
         } else {
-            // Fallback on earlier versions
+            LegacyCoordinatorView(coordinator: coordinator)
         }
     }
 }
