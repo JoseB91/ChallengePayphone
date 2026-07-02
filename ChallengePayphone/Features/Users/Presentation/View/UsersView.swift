@@ -11,7 +11,7 @@ struct UsersView: View {
     
     @StateObject var usersViewModel: UsersViewModel
     
-    var onSelectUser: ((User) -> Void)? = nil
+    var onSelectUser: ((Int) -> Void)? = nil
     var onCreateUser: (() -> Void)? = nil
     
     var body: some View {
@@ -22,7 +22,7 @@ struct UsersView: View {
             } else {
                 List(usersViewModel.users) { user in
                     Button {
-                        onSelectUser?(user)
+                        onSelectUser?(user.id)
                     } label: {
                         UserRowView(user: user)
                     }

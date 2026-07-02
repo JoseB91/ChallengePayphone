@@ -9,7 +9,7 @@ import SwiftUI
 
 private struct LegacyCoordinatorView: View {
     @ObservedObject var coordinator: UsersCoordinator
-    @State private var selectedUser: User? = nil
+    @State private var selectedUser: Int? = nil
 
     var body: some View {
         NavigationView {
@@ -19,7 +19,8 @@ private struct LegacyCoordinatorView: View {
             .background(
                 NavigationLink(
                     destination: Group {
-                        if let user = selectedUser {
+                        if let userId = selectedUser,
+                           let user = coordinator.usersViewModel.users.first(where: { $0.id == userId }) {
                             UserDetailView(user: user) { updated in
                                 Task {
                                     await coordinator.usersViewModel.update(updated)
@@ -55,11 +56,13 @@ struct CoordinatorView: View {
                           onCreateUser: coordinator.showCreateUser)
                 .navigationDestination(for: UsersRoute.self) { route in
                     switch route {
-                    case .detail(let user):
-                        UserDetailView(user: user) { updated in
-                            Task {
-                                await coordinator.usersViewModel.update(updated)
-                                coordinator.popToRoot()
+                    case .detail(let userId):
+                        if let user = coordinator.usersViewModel.users.first(where: { $0.id == userId }) {
+                            UserDetailView(user: user) { updated in
+                                Task {
+                                    await coordinator.usersViewModel.update(updated)
+                                    coordinator.popToRoot()
+                                }
                             }
                         }
                     }

@@ -40,8 +40,8 @@ final class UsersCoordinator: ObservableObject {
         self.usersViewModel = composer.composeUsersViewModel()
     }
 
-    func showDetail(for user: User) {
-        path.append(.detail(user))
+    func showDetail(for userId: Int) {
+        path.append(.detail(userId))
     }
     
     func showCreateUser() {
@@ -54,5 +54,5 @@ final class UsersCoordinator: ObservableObject {
 }
 
 enum UsersRoute: Hashable {
-    case detail(User)
+    case detail(Int)
 }
