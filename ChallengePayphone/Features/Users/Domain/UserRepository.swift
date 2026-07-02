@@ -9,4 +9,5 @@ protocol UserRepository {
     func loadUsers() async throws -> [User]
     func deleteUser(userId: Int) async throws
     func createUser(_ user: User) async throws
+    func updateUser(_ user: User) async throws
 }

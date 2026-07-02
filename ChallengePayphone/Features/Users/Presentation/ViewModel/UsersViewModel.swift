@@ -51,7 +51,16 @@ final class UsersViewModel: ObservableObject {
         }
     }
 
-    
+    func update(_ user: User) async {
+        do {
+            try await repository.updateUser(user)
+            users = try await repository.loadUsers()
+        } catch {
+            errorModel = ErrorModel(message: "\(String(localized: "FAILED_UPDATE")) \(error.localizedDescription)")
+        }
+    }
+
+
 }
 
 struct ErrorModel: Identifiable {

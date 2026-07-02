@@ -47,6 +47,10 @@ final class UsersCoordinator: ObservableObject {
     func showCreateUser() {
         isShowingCreateUser = true
     }
+
+    func popToRoot() {
+        path.removeAll()
+    }
 }
 
 enum UsersRoute: Hashable {

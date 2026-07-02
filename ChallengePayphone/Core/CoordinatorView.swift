@@ -19,7 +19,12 @@ struct CoordinatorView: View {
                 .navigationDestination(for: UsersRoute.self) { route in
                     switch route {
                     case .detail(let user):
-                        UserDetailView(user: user)
+                        UserDetailView(user: user) { updated in
+                            Task {
+                                await coordinator.usersViewModel.update(updated)
+                                coordinator.popToRoot()
+                            }
+                        }
                     }
                 }
                 .sheet(isPresented: $coordinator.isShowingCreateUser) {
