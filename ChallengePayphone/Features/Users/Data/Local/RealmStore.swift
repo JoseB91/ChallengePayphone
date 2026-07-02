@@ -27,7 +27,7 @@ extension RealmStore: UsersStore {
 
     func retrieveAll() async throws -> [User] {
         let localUsers = Array(realm.objects(LocalUser.self).filter("isDeleted == false"))
-        return localUsers.toModels()
+        return localUsers.map { $0.toDomain() }
     }
         
     func insertAll(_ users: [User]) async throws {
@@ -57,7 +57,7 @@ extension RealmStore: UsersStore {
         local.phone = phone
         local.city = city
         local.isLocalOnly = true
-        try? realm.write {
+        try realm.write {
             realm.add(local)
         }
     }
@@ -65,7 +65,7 @@ extension RealmStore: UsersStore {
     func updateUser(with id: Int, name: String, email: String) async throws {
         guard let user = realm.object(ofType: LocalUser.self, forPrimaryKey: id) else { return }
         
-        try? realm.write {
+        try realm.write {
             user.name = name
             user.email = email
             user.isEdited = true
@@ -74,7 +74,7 @@ extension RealmStore: UsersStore {
     
     func markDeleted(id: Int) async throws {
         guard let user = realm.object(ofType: LocalUser.self, forPrimaryKey: id) else { return }
-        try? realm.write {
+        try realm.write {
             user.isDeleted = true
         }
     }

@@ -12,16 +12,3 @@ protocol UsersStore {
     func updateUser(with id: Int, name: String, email: String) async throws
     func markDeleted(id: Int) async throws
 }
-
-extension Array where Element == LocalUser {
-    func toModels() -> [User] {
-        return map { User(id: $0.id,
-                          username: $0.username,
-                          name: $0.name,
-                          email: $0.email,
-                          phone: $0.phone,
-                          city: $0.city)
-            
-        }
-    }
-}
